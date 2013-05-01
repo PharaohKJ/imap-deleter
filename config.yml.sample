@@ -1,0 +1,6 @@
+config:
+  host: imap.server.com
+  user: imapuser
+  password: imapuserspassword
+  days_before: 21
+  auth_type: 'CRAM-MD5'
