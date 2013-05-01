@@ -6,7 +6,8 @@ require 'pp'
 require 'kconv'
 require 'date'
 
-config = YAML.load_file('config.yml')
+dir = File.expand_path(File.dirname($0))
+config = YAML.load_file(dir + '/config.yml')
 c = config['config']
 
 host     = c['host']
