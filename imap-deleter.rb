@@ -13,7 +13,6 @@ host     = c['host']
 user     = c['user']
 password = c['password']
 
-pp c
 imap = Net::IMAP.new(host)
 imap.authenticate(c['auth_type'], user, password)
 imap.select('INBOX')
@@ -28,13 +27,14 @@ def stripSpam(inEncodedSubject)
 end
 
 target_day = DateTime.now - c['days_before']
+
 rule = [
 	'BEFORE',
-	Net::IMAP.format_date(Time.new(
+	Time.mktime(
 		target_day.year,
 		target_day.month,
 		target_day.day
-		))
+		).strftime('%d-%b-%Y')	
 	]
 
 result = imap.search(rule)
